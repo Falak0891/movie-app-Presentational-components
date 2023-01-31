@@ -11,13 +11,34 @@ class MovieCard extends React.Component{
                 poster:
                     'https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg',
                 rating: '8.0',
-                price: 199 
+                price: 199,
+                star: 0
         } 
+
+        //Binding the event handler in the constructor if event handler is not an arrow function
+        // this.addStars = this.addStars.bind(this)
+  }
+
+  //Creating an arrow function for addStars which automatically binds to the current instance
+  addStars = () => {
+    //Form 1 of setState() - increasing the star count by 0.5
+    this.setState({
+        star : this.state.star + 0.5
+    })
+
+    //Form 2 of setState() - increasing the star count by 0.5
+    /**
+    this.setState((prevState) => {
+        return {
+            star: prevState + 0.5
+        }
+    })
+     */
   }
 
     render(){
         //Destructing the state object in render function
-        const {title, plot, poster, price, rating} =  this.state;
+        const {title, plot, poster, price, rating,star} =  this.state;
           
         return(
             <div className="main">
@@ -55,8 +76,10 @@ class MovieCard extends React.Component{
                                 <img className="str-btn" 
                                     alt="increase" 
                                     src="https://cdn-icons-png.flaticon.com/128/2997/2997933.png" 
+                                    // No binding required as addStars() is an arrow function
+                                    onClick={this.addStars}
                                 />
-                                <span className="starCount">0</span>
+                                <span className="starCount">{star}</span>
                             </div>
 
                             {/**Favourite and add to cart buttons */}
