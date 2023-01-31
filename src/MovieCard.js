@@ -21,6 +21,10 @@ class MovieCard extends React.Component{
 
   //Creating an arrow function for addStars which automatically binds to the current instance
   addStars = () => {
+    //Condition to stop the stars from increasing beyond 5
+    if(this.state.star >= 5){
+        return
+    }
     //Form 1 of setState() - increasing the star count by 0.5
     this.setState({
         star : this.state.star + 0.5
@@ -34,6 +38,18 @@ class MovieCard extends React.Component{
         }
     })
      */
+  }
+
+  // event handler to decrease the star by 0.5
+  decStars = () => {
+    //Condition to stop the stars from decreasing beyond 0
+    if(this.state.star <= 0){
+        return
+    }
+    //form1 of setState
+    this.setState({
+        star: this.state.star - 0.5
+    })
   }
 
     render(){
@@ -68,6 +84,7 @@ class MovieCard extends React.Component{
                                 <img className="str-btn" 
                                     alt="Decrease" 
                                     src="https://cdn-icons-png.flaticon.com/128/2801/2801932.png" 
+                                    onClick={this.decStars}
                                 />
                                 <img className="stars" 
                                         alt="stars" 
