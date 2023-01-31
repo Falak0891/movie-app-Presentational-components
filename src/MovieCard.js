@@ -1,9 +1,9 @@
 import React from "react";
 
-function MovieCard(){
+function MovieCard(props){
         
-    const {movies, onIncStars, onClickFav, onClickAddtocart, onDecStars} =  this.props
-    const {title, plot, poster, price, rating,stars,fav,isInCart} =  this.props.movies;
+    const {movies, onIncStars, onClickFav, onClickAddtocart, onDecStars} =  props
+    const {title, plot, poster, price, rating,stars,fav,isInCart} =  props.movies;
     
         
     return(

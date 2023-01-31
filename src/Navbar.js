@@ -1,9 +1,9 @@
 import React from "react";
 import styles from './nav.module.css'
 
-function Navbar () {
+function Navbar(props) {
   
-    const {cartCount} =  this.props;
+    const {cartCount} =  props;
        
       return (
       <>
